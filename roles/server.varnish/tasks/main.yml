@@ -1,0 +1,18 @@
+---
+# tasks file for server.cache
+#- include_tasks:
+    #file: check_vars.yml
+    #apply:
+      #tags:
+        #- check
+        #- varnish
+  #tags:
+    #- always
+
+- include_tasks:
+    file: varnish.yml
+    #apply:
+      #tags:
+        #- varnish
+  #tags:
+    #- always

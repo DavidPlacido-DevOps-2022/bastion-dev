@@ -1,0 +1,23 @@
+---
+# tasks file for server.nginx
+- name: Install tools
+  apt:
+    name: net-tools
+    state: present
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Replace file configuration
+  template:
+    src: default.j2
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    #- Reload systemd
+    - Restart nginx
+

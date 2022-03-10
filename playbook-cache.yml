@@ -1,9 +1,10 @@
 ---
-- name: setup varnish cache on 10.0.0.134
+- name: setup varnish cache on 172.31.34.115
   hosts: server-cache
   #gather_facts: no
     #vars_files:
     #- vars/variables.yml
   roles:
+    - role: server.update
     - role: server.nginx
     - role: server.varnish

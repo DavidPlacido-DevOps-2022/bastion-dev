@@ -1,0 +1,11 @@
+---
+# handlers file for server.web
+#- name: Reload systemd
+  #systemd:
+    #daemon_reload: true
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+

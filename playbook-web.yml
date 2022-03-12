@@ -1,0 +1,9 @@
+---
+- name: setup web api server on 172.31.37.38
+  hosts: server-webapi
+  #gather_facts: no
+    #vars_files:
+    #- vars/variables.yml
+  roles:
+    - role: server.update
+    - role: server.web

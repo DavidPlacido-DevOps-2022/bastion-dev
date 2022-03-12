@@ -1,0 +1,15 @@
+---
+# handlers file for server.web
+#- name: Reload systemd
+  #systemd:
+    #daemon_reload: true
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: Restart php-fpm
+  service:
+    name: php7.4-fpm
+    state: restarted

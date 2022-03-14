@@ -1,0 +1,14 @@
+- name: Download file
+  get_url:
+    url: https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh
+    dest: /home/ubuntu
+
+- name: Run Command
+  command:
+    cmd: bash script.deb.sh
+
+- name: Install Phalcon
+  apt:
+    name: 
+      - php7.4-phalcon
+    state: present

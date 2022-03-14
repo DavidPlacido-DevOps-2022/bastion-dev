@@ -1,0 +1,40 @@
+- name: Install Nginx
+  apt:
+    name:
+      - nginx
+      - php7.4-fpm
+    state: present
+
+- name: Replace file configuration
+  template:
+    src: default.j2
+    dest: /etc/nginx/sites-available/default
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Recursively change ownership of a directory
+  file:
+    path: "{{ web_path }}"
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+    mode: 0755
+
+- name: Touch the index.php file
+  file:
+    path: "{{ web_path }}/index.php"
+    state: touch
+    mode: 0644
+
+- name: Copy index.php
+  template:
+    src: index.j2
+    dest: "{{ web_path }}/index.php"
+    follow: yes
+
+  notify:
+    #- Reload systemd
+    - Restart nginx
+    - Restart php-fpm

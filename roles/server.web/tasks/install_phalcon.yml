@@ -11,4 +11,5 @@
   apt:
     name: 
       - php7.4-phalcon
+      - php7.4-dev
     state: present
